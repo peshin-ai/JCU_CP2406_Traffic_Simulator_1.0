@@ -1,8 +1,8 @@
 /*
-  Name: Nguyen Quoc Minh Quan
+  Name: Ung Ta Hoang Tuan
   Subject: CP2406 - Programming III
-  Start date: 4/12/2020
-  Github link: https://github.com/minhquan0902/JCU_CP2406_Traffic_Simulator_1.0/tree/master (on branch Master)
+  Start date: 7/4/2021
+  Github link: https://github.com/peshin-ai/JCU_CP2406_Traffic_Simulator_1.0
 
  */
 import java.util.ArrayList;
