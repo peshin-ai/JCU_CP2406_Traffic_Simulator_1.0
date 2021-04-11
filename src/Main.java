@@ -11,29 +11,29 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int roadSpawns;
-        int carSpawns;
-        int lightSpawns =2;
+        Scanner UserInput = new Scanner(System.in);
+        int InitialRoads;
+        int InitialCars;
+        int LightInRoad =2;
         int gasStationSpawns = 1;
         int trafficSignSpawns = 1;
 
         do{
             System.out.print("Please enter a positive number of road to spawn on the traffic simulator: ");
-            while(!sc.hasNextInt()){
+            while(!UserInput.hasNextInt()){
                 System.out.print("Please enter an appropriate positive Integer! ");
-                sc.next();
+                UserInput.next();
             }
-            roadSpawns = sc.nextInt();
-        }while (roadSpawns <= 0);
+            InitialRoads = UserInput.nextInt();
+        }while (InitialRoads <= 0);
         do{
             System.out.print("Please enter a positive number of cars to spawn on the traffic simulator: ");
-            while(!sc.hasNextInt()){
+            while(!UserInput.hasNextInt()){
                 System.out.print("Please enter an appropriate positive Integer! ");
-                sc.next();
+                UserInput.next();
             }
-            carSpawns = sc.nextInt();
-        }while (carSpawns <= 0);
+            InitialCars = UserInput.nextInt();
+        }while (InitialCars <= 0);
 
 
 
@@ -42,20 +42,20 @@ public class Main {
         ArrayList<TrafficLight> lights = new ArrayList<>();
         ArrayList<TrafficSign> trafficSigns = new ArrayList<>();
         ArrayList<GasStation> gasStations = new ArrayList<>();
-        showUI(sc, roads, cars, lights, trafficSigns, gasStations, roadSpawns, carSpawns, lightSpawns, gasStationSpawns, trafficSignSpawns);
-        showGamePlay(sc, cars, lights, gasStations, trafficSigns);
+        showUI(UserInput, roads, cars, lights, trafficSigns, gasStations, InitialRoads, InitialCars, LightInRoad, gasStationSpawns, trafficSignSpawns);
+        showGamePlay(UserInput, cars, lights, gasStations, trafficSigns);
         System.out.println("Enter the number of road to spawn");
     }
 
     public static void showUI(Scanner sc, ArrayList<Road> roads, ArrayList<Car> cars, ArrayList<TrafficLight> lights, ArrayList<TrafficSign> trafficSigns, ArrayList<GasStation> gasStations, int roadSpawns, int carSpawns, int lightSpawns, int gasStationSpawns, int trafficSignSpawn) {
         System.out.println("Object Creation:\n---------------------");
         System.out.println("Roads:");
-        for (int i = 0; i < roadSpawns; i++) {
-            System.out.println("Please input parameters for road_" + i + "...");
+        for (int number = 0; number < roadSpawns; number++) {
+            System.out.println("Please input parameters for road_" + number + "...");
             System.out.print("Length:");
             int lengthInput = sc.nextInt();
             int speedLimitInput = 1; // force speed limit to be 1 for prototype.
-            roads.add(new Road(Integer.toString(i), speedLimitInput, lengthInput, new int[]{0, 0}));
+            roads.add(new Road(Integer.toString(number), speedLimitInput, lengthInput, new int[]{0, 0}));
         }
         System.out.println("\nRoads;");
         for (Road road : roads
@@ -64,31 +64,31 @@ public class Main {
         }
 
         System.out.println("\nCars;");
-        for (int i = 0; i < carSpawns; i++) {
-            cars.add(new Car(Integer.toString(i), roads.get(0))); // all created cars will begin on road_0.
-            cars.get(i).showOutPut();
+        for (int number = 0; number < carSpawns; number++) {
+            cars.add(new Car(Integer.toString(number), roads.get(0))); // all created cars will begin on road_0.
+            cars.get(number).showOutPut();
         }
 
 
         System.out.println("\nTraffic Lights;");
 
-        for (int i = 0; i < lightSpawns; i++) {
-            lights.add(new TrafficLight(Integer.toString(i), roads.get(0))); // all created lights will begin on road_0.
-            lights.get(i).showLightInfo();
+        for (int number = 0; number < lightSpawns; number++) {
+            lights.add(new TrafficLight(Integer.toString(number), roads.get(0))); // all created lights will begin on road_0.
+            lights.get(number).showLightInfo();
         }
         System.out.print("\nTraffic Sign;");
 
-        for (int i = 0; i < trafficSignSpawn; i ++){
-            trafficSigns.add(new TrafficSign(Integer.toString(i), roads.get(0)));
-            trafficSigns.get(i).showSignInfo();
+        for (int number = 0; number < trafficSignSpawn; number ++){
+            trafficSigns.add(new TrafficSign(Integer.toString(number), roads.get(0)));
+            trafficSigns.get(number).showSignInfo();
         }
 
 
         System.out.println("\nGas Stations;");
 
-        for (int i = 0; i < gasStationSpawns; i++) {
-            gasStations.add(new GasStation(Integer.toString(i), roads.get(0)));
-            gasStations.get(i).showInfo();
+        for (int number = 0; number < gasStationSpawns; number++) {
+            gasStations.add(new GasStation(Integer.toString(number), roads.get(0)));
+            gasStations.get(number).showInfo();
         }
 
         System.out.println();
